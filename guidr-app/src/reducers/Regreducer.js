@@ -1,4 +1,4 @@
-import { REG_GUIDER , REG_ERROR } from '../actions';
+import { REG_GUIDE_ADD , REG_GUIDE_SUCCESS, REG_ERROR } from '../actions';
 
 const initialState = {
     guides: [],
@@ -9,12 +9,17 @@ const initialState = {
 
 export const Regreducer = (state = initialState, action) => {
     switch(action.type){
-        case REG_GUIDER: 
+        case REG_GUIDE_ADD: 
         return {
             isRegistering: true,
             error: '',
-            guides: action.payload
         } 
+        
+        case REG_GUIDE_SUCCESS:
+        return {
+            isRegistering: false,
+            guides: action.payload,
+        }
         
         case REG_ERROR: 
         return {
