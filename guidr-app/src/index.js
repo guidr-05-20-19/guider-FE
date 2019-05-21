@@ -1,8 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import { createStore, applyMiddleware } from 'redux';
+import { Provider } from 'react-redux';
+import thunk from 'redux-thunk';
+
+import reducer from './reducers/loginReducer';
 import App from './App';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+// import 'bootstrap/dist/css/bootstrap.min.css';
+// import './styles.css';
 
+const store = createStore(reducer, applyMiddleware(thunk));
 
+const rootElement = document.getElementById('root');
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  rootElement
+);
