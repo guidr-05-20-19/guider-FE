@@ -13,12 +13,14 @@ function App() {
         <ul>
           <li>
             <Link to="/login">Login</Link>
+            
           </li>
           {/* <li>
             <Link to="/protected">Protected Page</Link>
           </li> */}
         </ul>
         <Route path="/login" component={Login} />
+        <Route path="/reg" component= {Registration} />
       
       
         {/* <PrivateRoute exact path="/protected" component={GasPrices} /> */}
