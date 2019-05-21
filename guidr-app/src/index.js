@@ -6,11 +6,15 @@ import thunk from 'redux-thunk';
 
 import reducer from './reducers/loginReducer';
 import App from './App';
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
+import logger from 'redux-logger';
+import thunk from 'redux-thunk';
+import combineReducers from './reducers';
 
-// import 'bootstrap/dist/css/bootstrap.min.css';
-// import './styles.css';
 
-const store = createStore(reducer, applyMiddleware(thunk));
+const store = createStore (combineReducers, applyMiddleware(logger,thunk));
+
 
 const rootElement = document.getElementById('root');
 ReactDOM.render(
