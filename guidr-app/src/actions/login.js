@@ -1,16 +1,5 @@
 import axios from 'axios';
 
-export const REG_GUIDE_ADD = 'REG_GUIDE_ADD';
-export const REG_GUIDE_SUCCESS = 'REG_GUIDE_SUCCESS'
-export const REG_ERROR = 'REG_ERROR';
-
-export const addGuider = guider => dispatch => {
-    dispatch({ type: REG_GUIDE_ADD })
-    axios
-        .post('', guider)
-        .then(res => console.log(res.data))
-        .catch(err => console.log(err))
-}
 
 export const LOGIN_START='LOGIN_START';
 export const LOGIN_SUCCESS='LOGIN_SUCCESS';
@@ -22,8 +11,12 @@ dispatch ({type: LOGIN_START});
     .post('https://tristan-guidr.herokuapp.com/user',creds)
     .then(res => {
         console.log(res)
+        // the below 2 lines set the token for the user when they are logged-in.
         localStorage.setItem('token', res.data.payload)
         dispatch({type: LOGIN_SUCCESS, payload: res.data.payload });
     })
-    .catch(err => console.log(err))
+    .catch(err => {
+        console.log(err)
+
+    })
 };

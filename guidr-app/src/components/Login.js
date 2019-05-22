@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 // import Loader from 'react-loader-spinner';
 
-import { login } from '../actions';
+import { login } from '../actions/login';
 
 class Login extends React.Component {
   state = {
@@ -24,9 +24,9 @@ class Login extends React.Component {
   login = e => {
     e.preventDefault();
     this.props.login(this.state.credentials)
-    // .then(() => {
-    //   this.props.history.push('/protected');
-    // });
+    .then(() => {
+      this.props.history.push('/dashboard');
+    });
   };
 
     render() {
@@ -53,7 +53,7 @@ class Login extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  isLoggingIn: state.isLoggingIn
+  isLoggingIn: state.loginReducer.isLoggingIn
 });
 
 export default connect(
