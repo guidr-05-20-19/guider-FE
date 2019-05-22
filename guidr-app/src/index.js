@@ -8,7 +8,7 @@ import thunk from 'redux-thunk';
 import combineReducers from './reducers';
 
 
-const store = createStore (combineReducers, applyMiddleware(logger,thunk));
+const store = createStore (combineReducers, applyMiddleware(thunk, logger));
 
 
 const rootElement = document.getElementById('root');
