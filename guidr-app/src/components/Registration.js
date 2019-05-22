@@ -12,7 +12,8 @@ class Registration extends React.Component {
 
     submitHandler = e => {
     e.preventDefault();
-    this.props.addGuider(this.state).then(()=> {this.props.history.push('./Login')})
+    this.props.addGuider(this.state).then(()=> {
+        this.props.history.push('./Login')})
     //may need to lead to another page that is called 'successful', settime out, and then refresh to login page
     }
 
@@ -62,6 +63,7 @@ class Registration extends React.Component {
 
 const mapStatetoProps = state => ({
 //map states to reducer here
+isRegistering: state.isRegistering
 })
 
 export default connect(mapStatetoProps, { addGuider })(Registration);
