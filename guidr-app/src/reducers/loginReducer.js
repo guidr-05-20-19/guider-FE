@@ -27,13 +27,14 @@ import {
         return {
           ...state,
           isLoggingIn: false,
+          token: action.payload
         };
       
       case LOGIN_FAILURE:
           return {
             ...state,
             isLoggingIn: false,
-
+            error: action.payload
           }
 
       default:
