@@ -29,7 +29,7 @@ class TripList extends React.Component {
             <div className= "tripslist">
             <h1>hello</h1>
                          
-            {/* {this.props.trips.map(trip => {
+            {this.props.trips.map(trip => {
                 return(
                     <div className = "trip-card" 
                         // onClick= {this.routeToTrip}
@@ -40,15 +40,9 @@ class TripList extends React.Component {
                     <h6>{trip.duration}</h6>
                     </div>
                 )} 
-            )}  */}
+            )} 
 
-            {/* {this.props.users.map( user => {
-                return (
-                    <h4>{user.name}</h4>
-                )
-            })
-
-            } */}
+            
 
             </div>
         )
@@ -58,8 +52,8 @@ class TripList extends React.Component {
 const mapStatesToProps = state => {
     return {fetchingData: state.loginReducer.fetchingData
     ,
-    trips: state.loginReducer.trips
-    
+    trips: state.getTripsReducer.trips,
+    log: console.log(state)
     }
 }
 

@@ -1,7 +1,7 @@
 import {
-    FETCH_DATA_START,
-    FETCH_DATA_SUCCESS,
-    FETCH_DATA_FAILURE
+    FETCH_TRIPS_START,
+    FETCH_TRIPS_SUCCESS,
+    FETCH_TRIPS_FAILURE
   } from '../actions';
 
 
@@ -15,7 +15,7 @@ import {
 
   export const getTripsReducer = (state = initialState, action) => {
     switch (action.type) {
-        case FETCH_DATA_START:
+        case FETCH_TRIPS_START:
         return {
           ...state,
           isLoading: true,
@@ -23,7 +23,7 @@ import {
   
         };
   
-        case FETCH_DATA_SUCCESS:
+        case FETCH_TRIPS_SUCCESS:
         return {
           ...state,
           trips: action.payload,
@@ -31,7 +31,7 @@ import {
           error: null,
         };
   
-        case FETCH_DATA_FAILURE:
+        case FETCH_TRIPS_FAILURE:
         return {
           ...state,
           isLoading: false,

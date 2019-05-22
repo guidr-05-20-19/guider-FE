@@ -9,7 +9,7 @@ export const LOGIN_FAILURE='LOGIN_FAILURE';
 export const login = creds => dispatch => {
     dispatch ({ type: LOGIN_START });
   return axios
-    .post('https://tristan-guidr.herokuapp.com/user',creds)
+    .post('https://tristan-guidr.herokuapp.com/login',creds)
     .then(res => {
         console.log(res)
         localStorage.setItem('token', res.data.token)
@@ -46,7 +46,7 @@ export const getTrips = () => dispatch => {
     .get('/trips')
     .then(res => {
         console.log(res)
-      dispatch({ type: FETCH_TRIPS_SUCCESS, payload: res.data.trips });
+      dispatch({ type: FETCH_TRIPS_SUCCESS, payload: res.data });
     })
     .catch(err => {
         console.log(err)
