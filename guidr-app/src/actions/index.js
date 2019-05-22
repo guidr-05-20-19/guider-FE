@@ -7,9 +7,13 @@ export const REG_ERROR = 'REG_ERROR';
 export const addGuider = guider => dispatch => {
     dispatch({ type: REG_GUIDE_ADD })
     axios
-        .post('', guider)
-        .then(res => console.log(res.data))
-        .catch(err => console.log(err))
+        .post('https://tristan-guidr.herokuapp.com/user', guider)
+        .then(res => {
+            dispatch({ type: REG_GUIDE_SUCCESS, payload: res.data})
+        })
+        .catch(err => {
+            dispatch({ type: REG_ERROR, payload: err.response})
+        })
 }
 
 export const LOGIN_START='LOGIN_START';

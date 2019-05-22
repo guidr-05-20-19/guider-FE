@@ -2,9 +2,9 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import Login from './components/Login';
 import Registration from './components/Registration'
-// import PrivateRoute from './PrivateRoute';
+import PrivateRoute from './components/PrivateRoute';
+import TripsList from './components/TripsList';
 
-// import GasPrices from './components/GasPrices';
 
 function App() {
   return (
@@ -12,18 +12,15 @@ function App() {
       <div className="App">
         <ul>
           <li>
+            <Link to="/reg">Register</Link>
             <Link to="/login">Login</Link>
-            
           </li>
-          {/* <li>
-            <Link to="/protected">Protected Page</Link>
-          </li> */}
+        
         </ul>
-        <Route path="/login" component={Login} />
-        <Route path="/reg" component= {Registration} />
+        <Route path="/" component={Login} />
+        <Route exact path="/reg" component= {Registration} />
+        <PrivateRoute exact path ="/protected" component={TripsList} />
       
-      
-        {/* <PrivateRoute exact path="/protected" component={GasPrices} /> */}
       </div>
     </Router>
   );

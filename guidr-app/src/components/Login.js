@@ -31,21 +31,24 @@ class Login extends React.Component {
 
     render() {
       return (
-      <div>
+      <div className= "log-in">
+        <h4>Guidr:</h4>
         <form onSubmit={this.login}>
+          <label for ="username">Username</label>
           <input
             type="text"
             name="username"
             value={this.state.credentials.username}
             onChange={this.handleChange}
           />
+          <label for = "password">Password</label>
           <input
             type="password"
             name="password"
             value={this.state.credentials.password}
             onChange={this.handleChange}
           />
-          <button>'Log in'</button>
+          <button>Log In</button>
         </form>
       </div>
     );
@@ -53,47 +56,10 @@ class Login extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  isLoggingIn: state.isLoggingIn
+  isLoggingIn: state.loginReducer.isLoggingIn
 });
 
 export default connect(
   mapStateToProps,
   { login }
 )(Login);
-
-
-
-
-// import React from 'react';
-// import { connect } from 'react-redux';
-
-//  import { login } from '../actions';
-
-
-// class Login extends React.Component {
-//     state = {
-//       credentials: {
-//         username: '',
-//         password: ''
-//       }
-//     };
-
-//     login = e => {
-//         e.preventDefault();
-//         this.props.login(this.state.credentials)
-//         .then(()=> {
-//             this.props.history.push('/protected')
-//         });
-
-
-//     }
-
-
-//     render() {
-
-//         }
-
-//     }
-
-
-//     export default connect(null, {login})(Login);

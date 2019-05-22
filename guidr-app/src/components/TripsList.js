@@ -9,14 +9,14 @@ class TripList extends React.Component {
 
     routeToTrip = (e, trip) => {
         e.preventDefault();
-        props.history.push(`/trip-list/${trip.id}`);
+        this.props.history.push(`/trip-list/${trip.id}`);
     }
 
 
     render(){
         return(
             <div className= "tripslist">
-            {props.trips.map(trip => {
+            {this.props.trips.map(trip => {
                 return(
                     <div className = "trip-card" 
                         onClick= {this.routeToTrip}
@@ -38,4 +38,4 @@ const mapStatesToProps = state => ({
     isFetching: state.isFetching
 })
 
-export default connect(mapStatesToProps, {getTrips} )(TripList);
+export default connect(mapStatesToProps, {} )(TripList);
