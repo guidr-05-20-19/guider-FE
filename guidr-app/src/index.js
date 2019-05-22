@@ -12,7 +12,7 @@ import logger from 'redux-logger';
 import combineReducers from './reducers';
 
 
-const store = createStore (combineReducers, applyMiddleware(logger,thunk));
+const store = createStore (combineReducers, applyMiddleware(thunk, logger));
 
 
 const rootElement = document.getElementById('root');

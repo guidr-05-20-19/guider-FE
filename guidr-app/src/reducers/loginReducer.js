@@ -33,6 +33,7 @@ import {
         return {
           ...state,
           isLoggingIn: false,
+          token: action.payload
         };
 <<<<<<< HEAD
 =======
@@ -41,7 +42,7 @@ import {
           return {
             ...state,
             isLoggingIn: false,
-
+            error: action.payload
           }
 
 >>>>>>> a8c4452940987a58edc238a157fd5a65956e63bf

@@ -24,6 +24,7 @@ class Login extends React.Component {
   login = e => {
     e.preventDefault();
 <<<<<<< HEAD
+<<<<<<< HEAD
     this.props.login(this.state.credentials)
     .then(() => {
       this.props.history.push('/dashboard');
@@ -32,6 +33,12 @@ class Login extends React.Component {
       this.props.history.push('/protected');
 >>>>>>> a8c4452940987a58edc238a157fd5a65956e63bf
     });
+=======
+    this.props.login(this.state.credentials)
+    // .then(() => {
+    //   this.props.history.push('/protected');
+    // });
+>>>>>>> f6919123c4b8d21936bab81aabc156757cbcd7ac
   };
 
     render() {
