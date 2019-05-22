@@ -12,10 +12,14 @@ class TripList extends React.Component {
         this.props.history.push(`/trip-list/${trip.id}`);
     }
 
-
     render(){
+        if (this.props.isFetching)
+            return (
+                <h1>Waiting</h1>
+            );
         return(
             <div className= "tripslist">
+            
             {this.props.trips.map(trip => {
                 return(
                     <div className = "trip-card" 

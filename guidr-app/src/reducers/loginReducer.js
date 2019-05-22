@@ -1,6 +1,6 @@
 import {
     LOGIN_SUCCESS,
-    LOGIN_ABSOLUTE_FAILURE,
+    LOGIN_FAILURE,
     LOGIN_START
     // FETCH_TRIPS_START,
     // FETCH_TRIPS_SUCCESS,
@@ -26,8 +26,15 @@ import {
       case LOGIN_SUCCESS:
         return {
           ...state,
-          isLoggingIn: false
+          isLoggingIn: false,
         };
+      
+      case LOGIN_FAILURE:
+          return {
+            ...state,
+            isLoggingIn: false,
+
+          }
 
       default:
         return state;
