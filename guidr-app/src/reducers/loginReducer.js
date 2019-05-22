@@ -2,15 +2,25 @@
 
 import {
     LOGIN_SUCCESS,
-    LOGIN_ABSOLUTE_FAILURE,
+    LOGIN_FAILURE,
     LOGIN_START
   } from '../actions';
   
   const initialState = {
+<<<<<<< HEAD
     error: null,
     isLoggingIn: false
   };
 
+=======
+    error: '',
+    fetchingData: false,
+    trips: [],
+    isLoggingIn: false,
+    token: localStorage.getItem('token')
+  };
+  
+>>>>>>> a8c4452940987a58edc238a157fd5a65956e63bf
   export const loginReducer = (state = initialState, action) => {
     switch (action.type) {
       case LOGIN_START:
@@ -22,12 +32,24 @@ import {
       case LOGIN_SUCCESS:
         return {
           ...state,
-          isLoggingIn: false
+          isLoggingIn: false,
         };
+<<<<<<< HEAD
+=======
+      
+      case LOGIN_FAILURE:
+          return {
+            ...state,
+            isLoggingIn: false,
+
+          }
+
+>>>>>>> a8c4452940987a58edc238a157fd5a65956e63bf
       default:
         return state;
     }
   };
+<<<<<<< HEAD
   
   
   
@@ -71,3 +93,6 @@ import {
 
 
 // }
+=======
+  
+>>>>>>> a8c4452940987a58edc238a157fd5a65956e63bf
