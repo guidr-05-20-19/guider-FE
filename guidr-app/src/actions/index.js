@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { axiosWithAuth } from '../axiosWithAuth';
 
 
 export const LOGIN_START='LOGIN_START';
@@ -17,7 +18,7 @@ export const login = creds => dispatch => {
     .catch(err => console.log(err))
 };
 
-
+// User Registration
 export const REG_GUIDE_ADD = 'REG_GUIDE_ADD';
 export const REG_GUIDE_SUCCESS = 'REG_GUIDE_SUCCESS'
 export const REG_ERROR = 'REG_ERROR';
@@ -33,3 +34,25 @@ export const addGuider = guider => dispatch => {
             dispatch({ type: REG_ERROR, payload: err.response})
         })
 }
+
+// Fetching Trips Data
+
+export const FETCH_TRIPS_START = 'FETCH_TRIPS_START';
+export const FETCH_TRIPS_SUCCESS = 'FETCH_TRIPS_SUCCESS';
+export const FETCH_TRIPS_FAILURE = 'FETCH_TRIPS_FAILURE';
+export const getTrips = () => dispatch => {
+  dispatch({ type: FETCH_TRIPS_START });
+  axiosWithAuth()
+    .get('/trips')
+    .then(res => {
+        console.log(res)
+      dispatch({ type: FETCH_TRIPS_SUCCESS, payload: res.data.trips });
+    })
+    .catch(err => {
+        console.log(err)
+      dispatch(
+          
+         { type: FETCH_TRIPS_FAILURE }
+          );
+    });
+};
