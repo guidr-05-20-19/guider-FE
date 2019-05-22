@@ -1,3 +1,6 @@
+<<<<<<< HEAD
+/
+=======
 import React from 'react';
 import { connect } from 'react-redux';
 
@@ -41,3 +44,4 @@ class Trip extends React.Component {
 }
 
 export default connect(null, {})(Trip);
+>>>>>>> a8c4452940987a58edc238a157fd5a65956e63bf
