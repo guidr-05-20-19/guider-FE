@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 // import Loader from 'react-loader-spinner';
 
-import { login } from '../actions';
+import { login } from '../actions/index';
 
 class Login extends React.Component {
   state = {
@@ -23,12 +23,22 @@ class Login extends React.Component {
 
   login = e => {
     e.preventDefault();
-    this.props.login(this.state.credentials)
-    // .then(() => {
-    //   this.props.history.push('/protected');
-    // });
-  };
 
+    this.props.login(this.state.credentials)
+    .then(() => {
+      this.props.history.push('/dashboard');
+
+    this.props.login(this.state.credentials).then(() => {
+      this.props.history.push('/protected');
+    });
+
+    this.props.login(this.state.credentials)
+    .then(() => {
+      this.props.history.push('/protected');
+      });
+
+    });
+  }
     render() {
       return (
       <div className= "log-in">
