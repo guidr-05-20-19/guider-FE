@@ -33,3 +33,5 @@ export const addGuider = guider => dispatch => {
             dispatch({ type: REG_ERROR, payload: err.response})
         })
 }
+
+export const 

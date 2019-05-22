@@ -42,4 +42,4 @@ const mapStatesToProps = state => ({
     isFetching: state.isFetching
 })
 
-export default connect(mapStatesToProps, {} )(TripList);
+export default connect(mapStatesToProps, {getTrips} )(TripList);

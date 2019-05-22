@@ -17,7 +17,7 @@ function App() {
           </li>
         
         </ul>
-        <Route path="/" component={Login} />
+        <Route path="/login" component={Login} />
         <Route exact path="/reg" component= {Registration} />
         <PrivateRoute exact path ="/protected" component={TripsList} />
       
