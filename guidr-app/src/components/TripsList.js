@@ -28,7 +28,8 @@ class TripList extends React.Component {
             );
             console.log(this.props)
             console.log(this.state)
-        
+            
+            
             return(
         
             <div className= "tripslist">
@@ -50,13 +51,13 @@ class TripList extends React.Component {
                     )
                     })}
 
-                    <Route
+                    {/* <Route
                     path='/protected/:id'
                     render={props => (
                     <Trip {...props} 
                         trips={this.props.trips}
                         deleteTrip={this.props.deleteTrip}
-                    />
+                    /> */}
                   )}
                     />
 

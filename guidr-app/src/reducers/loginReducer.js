@@ -11,7 +11,7 @@ import {
   const initialState = {
     error: null,
     isLoggingIn: false,
-    // token: localStorage.getItem('token')
+    token: localStorage.getItem('token')
   };
 
   export const loginReducer = (state = initialState, action) => {

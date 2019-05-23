@@ -1,5 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { getTrips, addTrip, deleteTrip } from '../actions';
+import { withRouter, Link, Route } from 'react-router-dom';
 
 const Trip = props => {
     
@@ -44,5 +46,19 @@ const trip = props.trips.find( trip => `${trip.id}` === props.match.params.id);
 }
 
 
-export default connect(null, {})(Trip);
+const mapStatesToProps = state => {
+    return {fetchingData: state.loginReducer.fetchingData,
+    trips: state.getTripsReducer.trips,
+    isDeleting: state.deleteTripsReducer.isDeleting,
+    isAdding: state.addTripReducer.isAdding,
+    log: console.log(state)
+    }
+}
+
+export default withRouter(
+    connect(
+      mapStatesToProps,
+      { getTrips, addTrip, deleteTrip }
+    )(Trip)
+  );
 

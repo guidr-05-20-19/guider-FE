@@ -4,6 +4,7 @@ import Login from './components/Login';
 import Registration from './components/Registration';
 import PrivateRoute from './components/privateRoute';
 import TripsList from './components/TripsList';
+import Trip from './components/Trip';
 
 function App() {
 	return (
@@ -23,9 +24,17 @@ function App() {
 				/>
 
 				<PrivateRoute
-					 path="/protected"
+					 exact path="/protected"
 					component={TripsList}
 				/>
+
+				<PrivateRoute
+					 path="/protected/:id"
+					component={Trip}
+				/>
+
+
+
 				{/* might need to add a trips container that contains tripslist, routes, trips etc to get Private routing to work properly with param props */}
 
 			</div>
