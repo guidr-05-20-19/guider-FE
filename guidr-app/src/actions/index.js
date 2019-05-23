@@ -45,14 +45,27 @@ export const getTrips = () => dispatch => {
   axiosWithAuth()
     .get('/trips')
     .then(res => {
-        console.log(res)
       dispatch({ type: FETCH_TRIPS_SUCCESS, payload: res.data });
     })
     .catch(err => {
-        console.log(err)
-      dispatch(
-          
-         { type: FETCH_TRIPS_FAILURE }
-          );
+      dispatch({ type: FETCH_TRIPS_FAILURE, payload: err });
+    });
+};
+
+// Add Trip
+export const ADD_TRIPS_START = 'ADD_TRIPS_START';
+export const ADD_TRIPS_SUCCESS = 'ADD_TRIPS_SUCCESS';
+export const ADD_TRIPS_FAILURE = 'ADD_TRIPS_FAILURE';
+
+export const addTrip = trip => dispatch => {
+  dispatch({ type: ADD_TRIPS_START });
+  axiosWithAuth()
+    .post('/trips', trip)
+    .then(res => {
+      console.log(res)
+      dispatch({ type: ADD_TRIPS_SUCCESS, payload: res.data });
+    })
+    .catch(err => {
+      dispatch({ type: ADD_TRIPS_FAILURE, payload: err });
     });
 };
