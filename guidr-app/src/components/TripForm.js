@@ -3,34 +3,57 @@ import { connect } from 'react-redux';
 
 class TripForm extends React.Component{
     state = {
-        trips: {
+        trip: {
             title: '',
             duration: '',
-            date: '',
             description: '',
+            adventure_type: '',
+            location: '',
+            professional: false, 
+            date: '',
+            id: '',
+            user_id: 2
         }
     }
 
 changeHandler = e => {
     this.setState ({
-        ...this.state.trips,
+        trip: {
+        ...this.state.trip,
         [e.target.name]: e.target.value
+        }
     })
 }
 
+
 submitHandler = e => {
     e.preventDefault();
-    // this.props.addTrip(this.state.trip).then(() => {
+    const newTrip = {
+        ...this.state.trip,
+            date: '10/10/2010',
+            id: Date.now()
+
+    } 
+    this.props.addTrip(newTrip)
+    // .then(() => {
     //     this.props.history.push('/protected')
     // })
+
     this.setState({
-        trips: {
+        trip: {
             title: '',
             duration: '',
-            date: '',
             description: '',
+            adventure_type: '',
+            location: '',
+            professional: false, 
+            date: '',
+            id: '',
+            user_id: 2
         }
     });
+
+    console.log(newTrip)
 
 };
 
@@ -43,28 +66,35 @@ submitHandler = e => {
                     type = "text"
                     name = "title"
                     placeholder= "Eagle Rock"
-                    value = {this.state.trips.username}
+                    value = {this.state.trip.title}
                     onChange= {this.changeHandler}
                  />
                 <label for = "duration">Duration:</label>
                 <input
                     type = "text"
                     name = "duration"
-                    value = {this.state.trips.duration}
+                    value = {this.state.trip.duration}
                     onChange = {this.changeHandler}
                 />
-                <label for ="email">Email:</label>
+                <label for ="adventure_type">adventure_type:</label>
                 <input 
                     type = "text"
-                    name = "date"
-                    value = {this.state.trips.date}
+                    name = "adventure_type"
+                    value = {this.state.trip.adventure_type}
+                    onChange= {this.changeHandler}
+                />
+                 <label for ="location">location</label>
+                <input 
+                    type = "text"
+                    name = "location"
+                    value = {this.state.trip.location}
                     onChange= {this.changeHandler}
                 />
                 <label for = "password">Description: </label>
                 <input
                     type= "text"
                     name= "description"
-                    value= {this.state.trips.description}
+                    value= {this.state.trip.description}
                     onChange= {this.changeHandler}
                 />
                 <button>Add Trip</button>
