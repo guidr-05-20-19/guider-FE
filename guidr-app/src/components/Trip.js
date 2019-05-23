@@ -5,7 +5,7 @@ const Trip = props => {
     
     
 const trip = props.trips.find( trip => `${trip.id}` === props.match.params.id);
-console.log(trip)
+
     
 
     // updateTrip = e => {
@@ -13,10 +13,11 @@ console.log(trip)
     //     this.props.history.push('/update-form')
     // }
 
-    // const deleteTrip = (e,id) => {
+    // const deleteHandler = (e) => {
     //     e.preventDefault();
-    //     // this.setState({ deletingTrip: id})
-    //     this.props.deleteTrips(trip.id);
+    //     props.deleteTrip(trip.id);
+    //      props.history.push('/protected');
+        
 
     // }
 
@@ -30,8 +31,13 @@ console.log(trip)
                 <h6>{trip.duration} hrs</h6>
                 <h6>{trip.date}</h6>
                 <p>{trip.description}</p>
+                <p>{trip.id}</p>
                 {/* <button onClick={this.updateTrip}>Edit Trip</button> */}
-                {/* <button onClick= {this.deleteTrip}>Delete Trip</button> */}
+                <button onClick= {ev => {
+         ev.preventDefault();
+         props.deleteTrip(trip.id);
+         props.history.push('/protected');
+         }}>Delete Trip</button>
             </div>
         )
     

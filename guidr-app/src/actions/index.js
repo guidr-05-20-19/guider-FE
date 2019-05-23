@@ -83,3 +83,30 @@ export const ADD_TRIP_FAILURE = 'ADD_TRIP_FAILURE';
             });
         })
   }
+
+
+  export const DELETE_TRIP_START = 'DELETE_TRIP_START';
+export const DELETE_TRIP_SUCCESS = 'DELETE_TRIP_SUCCESS';
+export const DELETE_TRIP_FAILURE = 'DELETE_TRIP_FAILURE';
+
+  
+  export const deleteTrip = (id) => dispatch => {
+    console.log(id)
+    dispatch({type: DELETE_TRIP_START });
+    axiosWithAuth()
+    .delete(`/trips/${id}`, id)
+        .then(res => {
+            console.log(res.data);
+            
+            dispatch({
+                type: DELETE_TRIP_SUCCESS, 
+                payload: res.data
+             })
+        })
+        .catch (err => {
+            dispatch({
+                type: DELETE_TRIP_FAILURE,
+                payload: err
+            });
+        })
+  }

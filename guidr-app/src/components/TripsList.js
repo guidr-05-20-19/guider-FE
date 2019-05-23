@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { getTrips, addTrip } from '../actions';
+import { getTrips, addTrip, deleteTrip } from '../actions';
 import { withRouter, NavLink, Route } from 'react-router-dom';
 import TripForm from './TripForm'
 import Trip from './Trip'
@@ -19,10 +19,9 @@ class TripList extends React.Component {
     //     // this.props.history.push(`/trip-list/${trip.id}`);
     // }
 
- 
-
     
 
+ 
     render(){
         if (this.props.isFetching)
             return (
@@ -57,7 +56,7 @@ class TripList extends React.Component {
                     render={props => (
                     <Trip {...props} 
                         trips={this.props.trips}
-                        deleteTrips={this.props.deleteTrips}
+                        deleteTrip={this.props.deleteTrip}
                     />
                   )}
                     />
@@ -68,9 +67,9 @@ class TripList extends React.Component {
 }
 
 const mapStatesToProps = state => {
-    return {fetchingData: state.loginReducer.fetchingData
-    ,
+    return {fetchingData: state.loginReducer.fetchingData,
     trips: state.getTripsReducer.trips,
+    isDeleting: state.deleteTripsReducer.isDeleting,
     log: console.log(state)
     }
 }
@@ -78,7 +77,7 @@ const mapStatesToProps = state => {
 export default withRouter(
     connect(
       mapStatesToProps,
-      { getTrips, addTrip }
+      { getTrips, addTrip, deleteTrip }
     )(TripList)
   );
   
