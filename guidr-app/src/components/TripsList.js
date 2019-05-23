@@ -1,14 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { getTrips } from '../actions';
-import { withRouter } from 'react-router-dom';
-import { bindActionCreators } from '../../../../../../../Library/Caches/typescript/3.2/node_modules/redux';
+import { Link, withRouter } from 'react-router-dom';
+
 
 class TripList extends React.Component {
 
     componentDidMount(){
         this.props.getTrips()
-        console.log(this.state)
     }
 
     routeToTrip = (e, trip) => {
@@ -21,18 +20,18 @@ class TripList extends React.Component {
             return (
                 <h1>Waiting</h1>
             );
-            console.log(this.props)
-            console.log(this.state)
         
             return(
         
             <div className= "tripslist">
             <h1>hello</h1>
+
+            <Link to = "/newtrip"><h2>Tripform</h2></Link>
                          
             {this.props.trips.map(trip => {
                 return(
                     <div className = "trip-card" 
-                        // onClick= {this.routeToTrip}
+                        onClick= {this.routeToTrip}
                         key={trip.id}
                     >
                     <h4>{trip.title}</h4>
@@ -50,10 +49,9 @@ class TripList extends React.Component {
 }
 
 const mapStatesToProps = state => {
-    return {fetchingData: state.loginReducer.fetchingData
-    ,
-    trips: state.getTripsReducer.trips,
-    log: console.log(state)
+    return {
+        fetchingData: state.loginReducer.fetchingData,
+        trips: state.getTripsReducer.trips,
     }
 }
 

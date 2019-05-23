@@ -4,6 +4,7 @@ import Login from './components/Login';
 import Registration from './components/Registration';
 import PrivateRoute from './components/PrivateRoute';
 import TripsList from './components/TripsList';
+import TripForm from './components/TripForm';
 
 function App() {
 	return (
@@ -15,7 +16,7 @@ function App() {
 						<Link to="/login">Login</Link>
 					</li>
 				</ul>
-				<Route path="/" component={Login} />
+				<Route path="/Login" component={Login} />
 				<Route
 					exact
 					path="/reg"
@@ -26,6 +27,12 @@ function App() {
 					path="/protected"
 					component={TripsList}
 				/>
+				<PrivateRoute
+					exact
+					path="/newtrip"
+					component={TripForm}
+				/>
+				
 			</div>
 		</Router>
 	);

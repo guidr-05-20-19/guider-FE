@@ -1,40 +1,40 @@
 import {
-    FETCH_TRIPS_START,
-    FETCH_TRIPS_SUCCESS,
-    FETCH_TRIPS_FAILURE
+    ADD_TRIPS_START,
+    ADD_TRIPS_SUCCESS,
+    ADD_TRIPS_FAILURE
   } from '../actions';
 
 
   const initialState = {
     trips: [],
-    isLoading: true,
+    addingTrip: false,
     error:null
     
   };
 
 
-  export const getTripsReducer = (state = initialState, action) => {
+  export const addTripsReducer = (state = initialState, action) => {
     switch (action.type) {
-        case FETCH_TRIPS_START:
+        case ADD_TRIPS_START:
         return {
           ...state,
-          isLoading: true,
+          addingTrip: true,
           error: null
   
         };
   
-        case FETCH_TRIPS_SUCCESS:
+        case ADD_TRIPS_SUCCESS:
         return {
           ...state,
           trips: action.payload,
-          isLoading: false,
+          addingTrip: false,
           error: null,
         };
   
-        case FETCH_TRIPS_FAILURE:
+        case ADD_TRIPS_FAILURE:
         return {
           ...state,
-          isLoading: false,
+          addingTrip: false,
           error: action.payload
         };
 
