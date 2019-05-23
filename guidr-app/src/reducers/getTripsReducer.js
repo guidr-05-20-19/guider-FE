@@ -22,7 +22,6 @@ import {
           error: null
   
         };
-  
         case FETCH_TRIPS_SUCCESS:
         return {
           ...state,

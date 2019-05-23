@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import Login from './components/Login';
 import Registration from './components/Registration';
-import PrivateRoute from './components/PrivateRoute';
+import PrivateRoute from './components/privateRoute';
 import TripsList from './components/TripsList';
 
 function App() {
@@ -15,7 +15,7 @@ function App() {
 						<Link to="/login">Login</Link>
 					</li>
 				</ul>
-				<Route path="/" component={Login} />
+				<Route exact path="/login" component={Login} />
 				<Route
 					exact
 					path="/reg"
