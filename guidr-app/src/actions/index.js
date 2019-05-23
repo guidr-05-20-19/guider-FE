@@ -40,6 +40,8 @@ export const addGuider = guider => dispatch => {
 export const FETCH_TRIPS_START = 'FETCH_TRIPS_START';
 export const FETCH_TRIPS_SUCCESS = 'FETCH_TRIPS_SUCCESS';
 export const FETCH_TRIPS_FAILURE = 'FETCH_TRIPS_FAILURE';
+
+
 export const getTrips = () => dispatch => {
   dispatch({ type: FETCH_TRIPS_START });
   axiosWithAuth()
@@ -56,3 +58,28 @@ export const getTrips = () => dispatch => {
           );
     });
 };
+
+
+export const ADD_TRIP_START = 'ADD_TRIP_START';
+export const ADD_TRIP_SUCCESS = 'ADD_TRIP_SUCCESS';
+export const ADD_TRIP_FAILURE = 'ADD_TRIP_FAILURE';
+
+  
+  export const addTrip = (newTrip) => dispatch => {
+    dispatch({type: ADD_TRIP_START });
+    axiosWithAuth()
+    .post('/trips', newTrip)
+        .then(res => {
+            console.log(res.data);
+            dispatch({
+                type: ADD_TRIP_SUCCESS, 
+                payload: res.data
+             })
+        })
+        .catch (err => {
+            dispatch({
+                type: ADD_TRIP_FAILURE,
+                payload: err
+            });
+        })
+  }

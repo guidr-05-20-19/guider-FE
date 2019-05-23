@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { getTrips } from '../actions';
+import { getTrips, addTrip } from '../actions';
 import { withRouter } from 'react-router-dom';
+import TripForm from './TripForm'
 import { bindActionCreators } from '../../../../../../../Library/Caches/typescript/3.2/node_modules/redux';
 
 class TripList extends React.Component {
@@ -11,10 +12,17 @@ class TripList extends React.Component {
         console.log(this.state)
     }
 
-    routeToTrip = (e, trip) => {
-        e.preventDefault();
-        this.props.history.push(`/trip-list/${trip.id}`);
-    }
+    // routeToTrip = (e, trip) => {
+    //     e.preventDefault();
+    //     this.props.history.push(`/trip-list/${trip.id}`);
+    // }
+
+
+
+
+    
+
+
 
     render(){
         if (this.props.isFetching)
@@ -27,7 +35,8 @@ class TripList extends React.Component {
             return(
         
             <div className= "tripslist">
-            <h1>hello</h1>
+            
+            <TripForm addTrip= {this.props.addTrip}/>
                          
             {this.props.trips.map(trip => {
                 return(
@@ -60,7 +69,7 @@ const mapStatesToProps = state => {
 export default withRouter(
     connect(
       mapStatesToProps,
-      { getTrips }
+      { getTrips, addTrip }
     )(TripList)
   );
   
