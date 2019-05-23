@@ -21,15 +21,26 @@ function App() {
 					path="/reg"
 					component={Registration}
 				/>
+
 				<PrivateRoute
-					exact
-					path="/protected"
+					 path="/protected"
 					component={TripsList}
 				/>
+				{/* might need to add a trips container that contains tripslist, routes, trips etc to get Private routing to work properly with param props */}
+
 			</div>
 		</Router>
 	);
 }
+
+{/* <PrivateRoute
+path='/protected'
+render= {props => (
+<Trip {...props} 
+	trips={this.props.trips}
+	deleteTrips={this.props.deleteTrips}
+/> */}
+
 
 export default App;
 
