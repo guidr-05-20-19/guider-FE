@@ -7,7 +7,8 @@ import {
 
   const initialState = {
     error: null,
-    isDeleting: false
+    isDeleting: false,
+    trips: []
     // Array characters, Boolean DELETEing, null error.
   };
 
@@ -21,7 +22,6 @@ import {
           error: null
   
         };
-  
         case DELETE_TRIP_SUCCESS:
         console.log(action.payload)
         return {
@@ -30,7 +30,6 @@ import {
           isDeleting: false,
           error: null,
         };
-  
         case DELETE_TRIP_FAILURE:
         return {
           ...state,

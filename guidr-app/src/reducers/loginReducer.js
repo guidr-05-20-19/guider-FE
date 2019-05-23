@@ -10,7 +10,8 @@ import {
   
   const initialState = {
     error: null,
-    isLoggingIn: false
+    isLoggingIn: false,
+    token: localStorage.getItem('token')
   };
 
   export const loginReducer = (state = initialState, action) => {

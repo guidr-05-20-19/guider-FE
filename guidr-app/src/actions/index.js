@@ -53,7 +53,6 @@ export const getTrips = () => dispatch => {
     .catch(err => {
         console.log(err)
       dispatch(
-          
          { type: FETCH_TRIPS_FAILURE }
           );
     });

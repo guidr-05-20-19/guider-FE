@@ -1,11 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { getTrips, addTrip, deleteTrip } from '../actions';
-import { withRouter, NavLink, Route } from 'react-router-dom';
+import { withRouter, Link, Route } from 'react-router-dom';
+import PrivateRoute from './privateRoute';
 import TripForm from './TripForm'
 import Trip from './Trip'
 
-import { bindActionCreators } from '../../../../../../../Library/Caches/typescript/3.2/node_modules/redux';
+// import { bindActionCreators } from '../../../../../../../Library/Caches/typescript/3.2/node_modules/redux';
 
 class TripList extends React.Component {
 
@@ -20,8 +21,6 @@ class TripList extends React.Component {
     // }
 
     
-
- 
     render(){
         if (this.props.isFetching)
             return (
@@ -29,7 +28,8 @@ class TripList extends React.Component {
             );
             console.log(this.props)
             console.log(this.state)
-        
+            
+            
             return(
         
             <div className= "tripslist">
@@ -38,7 +38,7 @@ class TripList extends React.Component {
                          
                  {this.props.trips.map((trip) => {
                      return(
-                    <NavLink to={`/protected/${trip.id}`}>
+                    <Link to={`/protected/${trip.id}`}>
                     <div className = "trip-card" 
                     // onClick= {this.routeToTrip}
                         key={trip.id}
@@ -47,17 +47,17 @@ class TripList extends React.Component {
                     <h6>{trip.date}</h6>
                     <h6>{trip.duration}</h6>
                     </div>
-                    </NavLink>
+                    </Link>
                     )
                     })}
 
-                    <Route
+                    {/* <Route
                     path='/protected/:id'
                     render={props => (
                     <Trip {...props} 
                         trips={this.props.trips}
                         deleteTrip={this.props.deleteTrip}
-                    />
+                    /> */}
                   )}
                     />
 
@@ -70,6 +70,7 @@ const mapStatesToProps = state => {
     return {fetchingData: state.loginReducer.fetchingData,
     trips: state.getTripsReducer.trips,
     isDeleting: state.deleteTripsReducer.isDeleting,
+    isAdding: state.addTripReducer.isAdding,
     log: console.log(state)
     }
 }
