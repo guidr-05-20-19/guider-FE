@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import Login from './components/Login';
 import Registration from './components/Registration';
-import PrivateRoute from './components/privateRoute';
+import PrivateRoute from './components/PrivateRoute';
 import TripsList from './components/TripsList';
 import Trip from './components/Trip';
 
