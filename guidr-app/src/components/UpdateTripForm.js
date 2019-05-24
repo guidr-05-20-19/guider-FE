@@ -1,8 +1,11 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { updateTrip} from '../actions';
+import { withRouter, Link, Route } from 'react-router-dom';
 
-class TripForm extends React.Component{
+class UpdateTripForm extends React.Component {
     state = {
-        trip: {
+        updatedTrip: {
             title: '',
             duration: '',
             description: '',
@@ -17,8 +20,8 @@ class TripForm extends React.Component{
 
 changeHandler = e => {
     this.setState ({
-        trip: {
-        ...this.state.trip,
+        updatedTrip: {
+        ...this.state.updatedTrip,
         [e.target.name]: e.target.value
         }
     })
@@ -27,19 +30,19 @@ changeHandler = e => {
 
 submitHandler = e => {
     e.preventDefault();
-    const newTrip = {
-        ...this.state.trip,
-            date: '10/10/2010',
-            id: Date.now()
-
-    } 
-    this.props.addTrip(newTrip)
+        const updatedTrip = {
+            ...this.state.updatedTrip,
+                date: this.props.trip.date,
+                id: this.props.trip.id,
+                professional: this.props.trip.professional
+        } 
+        this.props.updateTrip(updatedTrip, this.props.trip.id)
     // .then(() => {
     //     this.props.history.push('/protected')
     // })
 
     this.setState({
-        trip: {
+        updatedTrip: {
             title: '',
             duration: '',
             description: '',
@@ -52,7 +55,7 @@ submitHandler = e => {
         }
     });
 
-    console.log(newTrip)
+    console.log(updatedTrip)
 
 };
 
@@ -65,44 +68,55 @@ submitHandler = e => {
                     type = "text"
                     name = "title"
                     placeholder= "Eagle Rock"
-                    value = {this.state.trip.title}
+                    value = {this.state.updatedTrip.title}
                     onChange= {this.changeHandler}
                  />
                 <label for = "duration">Duration:</label>
                 <input
                     type = "text"
                     name = "duration"
-                    value = {this.state.trip.duration}
+                    value = {this.state.updatedTrip.duration}
                     onChange = {this.changeHandler}
                 />
-                <label for ="trip_type">trip_type:</label>
+                <label for ="_type">trip_type:</label>
                 <input 
                     type = "text"
                     name = "trip_type"
-                    value = {this.state.trip.trip_type}
+                    value = {this.state.updatedTrip.trip_type}
                     onChange= {this.changeHandler}
                 />
                  <label for ="location">location</label>
                 <input 
                     type = "text"
                     name = "location"
-                    value = {this.state.trip.location}
+                    value = {this.state.updatedTrip.location}
                     onChange= {this.changeHandler}
                 />
                 <label for = "password">Description: </label>
                 <input
                     type= "text"
                     name= "description"
-                    value= {this.state.trip.description}
+                    value= {this.state.updatedTrip.description}
                     onChange= {this.changeHandler}
-                />
-                <button>Add Trip</button>
-            </form>
-            </div>
-        )
-
+                />         
+                <button className="form-button">Update Trip</button>
+          </form>
+        </div>
+      );
     }
-
+  }
+  
+  
+  const mapStatesToProps = state => {
+    return {
+    isUpdating: state.updateTripReducer.isUpdating,
+    // log: console.log(state)
+    }
 }
 
-export default TripForm
+export default withRouter(
+    connect(
+      mapStatesToProps,
+      { updateTrip}
+    )(UpdateTripForm)
+  );
