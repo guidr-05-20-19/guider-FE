@@ -8,7 +8,8 @@ import {
   
   const initialState = {
     error: null,
-    isLoggingIn: false
+    isLoggingIn: false,
+    token: localStorage.getItem('token')
   };
 
   export const loginReducer = (state = initialState, action) => {
@@ -40,45 +41,3 @@ import {
 
   };
   
-  
-  
-
-
-
-// import {LOGIN_START,
-//  LOGIN_SUCCESS,
-//  LOGIN_FAILURE,
-// } from '../actions';
-
-
-// const initialState={
-//     error:null,
-//     fetchingData:false,
-//     LoggingIn:false
-// }
-
-// const reducer = (state = initialState, action )=>{
-//     switch (action.type){
-//         case LOGIN_START:
-//             return {
-//                 ...state,
-//                 LoggingIn: true,
-//                 error: null
-//             };
-//         case LOGIN_SUCCCESS:
-//             return {
-//                 ...state,
-//                 LoggingIn: false,
-//                 error: null
-//             };
-//         default:
-//         return state;
-
-
-
-//     }
-
-
-
-
-// }

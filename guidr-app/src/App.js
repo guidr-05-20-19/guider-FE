@@ -5,17 +5,17 @@ import Registration from './components/Registration';
 import PrivateRoute from './components/PrivateRoute';
 import TripsList from './components/TripsList';
 import TripForm from './components/TripForm';
+import Trip from './components/Trip';
 
 function App() {
 	return (
 		<Router>
 			<div className="App">
-				<ul>
-					<li>
-						<Link to="/reg">Register</Link>
-						<Link to="/login">Login</Link>
-					</li>
-				</ul>
+				<div className = "nav">
+					<div><Link to="/protected">Your Guidr</Link></div>
+					<div><Link to="/login">Log In</Link></div>
+				</div>
+				
 				<Route path="/Login" component={Login} />
 				<Route
 					exact
@@ -32,6 +32,16 @@ function App() {
 					path="/newtrip"
 					component={TripForm}
 				/>
+				<PrivateRoute
+					path= "/protected/trips/:id"
+					component={Trip}
+				/>
+
+				
+				
+
+
+				
 				
 			</div>
 		</Router>

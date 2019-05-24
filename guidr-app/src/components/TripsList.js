@@ -10,11 +10,6 @@ class TripList extends React.Component {
         this.props.getTrips()
     }
 
-    routeToTrip = (e, trip) => {
-        e.preventDefault();
-        this.props.history.push(`/trip-list/${trip.id}`);
-    }
-
     render(){
         if (this.props.isFetching)
             return (
@@ -24,24 +19,25 @@ class TripList extends React.Component {
             return(
         
             <div className= "tripslist">
-            <h1>hello</h1>
+            <h1>Guider Trips</h1>
 
-            <Link to = "/newtrip"><h2>Tripform</h2></Link>
+            <Link to = "/newtrip"><h2>Add a Trip</h2></Link>
                          
             {this.props.trips.map(trip => {
                 return(
                     <div className = "trip-card" 
-                        onClick= {this.routeToTrip}
-                        key={trip.id}
-                    >
+                        key={trip.id}>
+                    <Link to = {`protected/trips/${trip.id}`}>
                     <h4>{trip.title}</h4>
                     <h6>{trip.date}</h6>
                     <h6>{trip.duration}</h6>
+                    </Link>
                     </div>
+                    
                 )} 
             )} 
 
-            
+                
 
             </div>
         )

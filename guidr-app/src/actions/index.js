@@ -69,3 +69,56 @@ export const addTrip = trip => dispatch => {
       dispatch({ type: ADD_TRIPS_FAILURE, payload: err });
     });
 };
+
+//Mounting param
+export const GETONE_START = 'GETONE_START';
+export const GETONE_SUCCESS = 'GETONE_SUCCESS';
+export const GETONE_FAILURE = 'GETONE_FAILURE';
+
+export const getoneTrip = id => dispatch => {
+  dispatch ({ type: GETONE_START })
+  axiosWithAuth()
+    .get(`/trips/${id}`, id)
+    .then(res => {
+      dispatch({ type: GETONE_SUCCESS, payload: res.data });
+    })
+    .catch(err => {
+      dispatch({ type: GETONE_FAILURE, payload: err.response });
+    });
+};
+
+//Delete Trip
+
+export const DELETE_START = 'DELETE_START';
+export const DELETE_SUCCESS = 'DELETE_SUCCESS';
+export const DELETE_FAILURE = 'DELETE_FAILURE';
+
+export const deleteTrip = id => dispatch => {
+  dispatch({ type: DELETE_START });
+  axiosWithAuth()
+    .delete(`/trips/${id}`, id)
+    .then(res => {
+      dispatch({ type: DELETE_SUCCESS, payload: res.data });
+    })
+    .catch(err => {
+      dispatch({ type: DELETE_FAILURE, payload: err.response });
+    });
+};
+
+//update trip
+
+export const UPDATE_START = 'UPDATE_START';
+export const UPDATE_SUCCESS = 'UPDATE_SUCCESS';
+export const UPDATE_FAILURE = 'UPDATE_FAILURE';
+
+export const updateTrip = (updatedTrip, id) => dispatch => {
+  dispatch({ type:  UPDATE_START });
+  axiosWithAuth()
+    .put(`/trips/${id}`, updatedTrip)
+    .then(res => {
+      dispatch({ type:  UPDATE_SUCCESS, payload: res.data });
+    })
+    .catch(err => {
+      dispatch({ type:  UPDATE_FAILURE, payload: err.response });
+    });
+};

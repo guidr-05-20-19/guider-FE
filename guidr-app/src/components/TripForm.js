@@ -2,9 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import  { addTrip } from '../actions/index';
 
-class TripForm extends React.Component{
+class TripForm extends React.Component {
     state = {
-        trips: {
+        trip: {
             title: '',
             duration: '',
             date: '',
@@ -15,8 +15,8 @@ class TripForm extends React.Component{
 
 changeHandler = e => {
     this.setState ({
-        trips: {
-        ...this.state.trips,
+        trip: {
+        ...this.state.trip,
         [e.target.name]: e.target.value
         }
     });
@@ -25,7 +25,7 @@ changeHandler = e => {
 submitHandler = e => {
     e.preventDefault();
     this.props
-        .addTrip(this.state.trips)
+        .addTrip(this.state.trip)
         // .then(() => this.props.history.push('/protected'))
 
     this.setState({
@@ -48,7 +48,7 @@ submitHandler = e => {
                     type = "text"
                     name = "title"
                     placeholder= "Eagle Rock"
-                    value = {this.state.trips.title}
+                    value = {this.state.trip.title}
                     onChange= {this.changeHandler}
                  />
                 <label htmlFor = "duration">Duration:</label>
@@ -56,7 +56,7 @@ submitHandler = e => {
                     type = "text"
                     name = "duration"
                     placeholder= "4.5 hours"
-                    value = {this.state.trips.duration}
+                    value = {this.state.trip.duration}
                     onChange = {this.changeHandler}
                 />
                 <label htmlFor = "Date">Date:</label>
@@ -64,14 +64,14 @@ submitHandler = e => {
                     type = "text"
                     name = "date"
                     placeholder= "MM/DD/YYYY"
-                    value = {this.state.trips.date}
+                    value = {this.state.trip.date}
                     onChange= {this.changeHandler}
                 />
                 <label htmlFor = "Description">Description: </label>
                 <textarea
                     name= "description"
                     placeholder= "Type out your description here"
-                    value= {this.state.trips.description}
+                    value= {this.state.trip.description}
                     onChange= {this.changeHandler}
                 />
                 <button>Add Trip</button>
