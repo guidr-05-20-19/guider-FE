@@ -1,14 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { getTrips, addTrip, deleteTrip } from '../actions';
+import { getTrips, addTrip, deleteTrip, updateTrip } from '../actions'; //updateTrip
 import { withRouter, Link, Route } from 'react-router-dom';
+import UpdateTripForm from './UpdateTripForm'
 
 const Trip = props => {
     
     
 const trip = props.trips.find( trip => `${trip.id}` === props.match.params.id);
 
-    
 
     // updateTrip = e => {
     //     e.preventDefault();
@@ -28,18 +28,24 @@ const trip = props.trips.find( trip => `${trip.id}` === props.match.params.id);
       }
       
         return(
-            <div className = "eachTrip">
+            <div className = "trip-wrapper">
+            
+            <div className= 'trip-info'>
                 <h2>{trip.title}</h2>
                 <h6>{trip.duration} hrs</h6>
                 <h6>{trip.date}</h6>
                 <p>{trip.description}</p>
-                <p>{trip.id}</p>
-                {/* <button onClick={this.updateTrip}>Edit Trip</button> */}
+            </div>
+
                 <button onClick= {ev => {
          ev.preventDefault();
          props.deleteTrip(trip.id);
          props.history.push('/protected');
          }}>Delete Trip</button>
+
+            <UpdateTripForm trip={trip} />
+
+
             </div>
         )
     
@@ -51,6 +57,7 @@ const mapStatesToProps = state => {
     trips: state.getTripsReducer.trips,
     isDeleting: state.deleteTripsReducer.isDeleting,
     isAdding: state.addTripReducer.isAdding,
+    // isUpdating: state.addTripReducer.isUpdating,
     log: console.log(state)
     }
 }
@@ -58,7 +65,9 @@ const mapStatesToProps = state => {
 export default withRouter(
     connect(
       mapStatesToProps,
-      { getTrips, addTrip, deleteTrip }
+      { getTrips, addTrip, deleteTrip, updateTrip
+    //updateTrip 
+      }
     )(Trip)
   );
 

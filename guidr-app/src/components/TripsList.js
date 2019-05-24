@@ -58,8 +58,8 @@ class TripList extends React.Component {
                         trips={this.props.trips}
                         deleteTrip={this.props.deleteTrip}
                     /> */}
-                  )}
-                    />
+                  {/* )}
+                    /> */}
 
             </div>
         )
