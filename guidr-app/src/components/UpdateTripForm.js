@@ -62,6 +62,7 @@ submitHandler = e => {
     render(){
         return(
             <div className="tripform">
+            <h4> Update Trip:</h4>
             <form onSubmit={this.submitHandler}>
                 <label for = "title">Trip Title:</label>
                 <input
