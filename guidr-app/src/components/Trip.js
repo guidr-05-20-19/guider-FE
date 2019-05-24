@@ -10,18 +10,6 @@ const Trip = props => {
 const trip = props.trips.find( trip => `${trip.id}` === props.match.params.id);
 
 
-    // updateTrip = e => {
-    //     e.preventDefault();
-    //     this.props.history.push('/update-form')
-    // }
-
-    // const deleteHandler = (e) => {
-    //     e.preventDefault();
-    //     props.deleteTrip(trip.id);
-    //      props.history.push('/protected');
-        
-
-    // }
 
     if (!trip) {
         return <h2>Loading item data...</h2>;
