@@ -13,10 +13,10 @@ class Trip extends React.Component {
         this.props.getoneTrip(this.props.match.params.id)
     }
 
-    updateTrip = e => {
+    updateTrip = (e, trip) => {
         e.preventDefault();
         this.props
-            .updateTrip(this.props.match.params.id)
+            .updateTrip(trip)
             .then ( () => { this.setState({ editingTripId: null }) } )
     }
 

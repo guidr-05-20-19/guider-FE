@@ -19,8 +19,7 @@ class TripUpdate extends React.Component {
 
     updateTrip = e => {
         console.log(this.props)
-        e.preventDefault();
-        this.props.updateTrip(e, this.state.trip)
+        this.props.updateTrip(this.state.trip, this.state.trip.id)
     }
 
 
@@ -28,7 +27,7 @@ class TripUpdate extends React.Component {
         console.log(this.props)
         return(
             <div className="tripform">
-            <form onSubmit={this.submitHandler}>
+            <form onSubmit={this.updateTrip}>
                 <label htmlFor = "title">Trip Title:</label>
                 <input
                     type = "text"
@@ -60,7 +59,7 @@ class TripUpdate extends React.Component {
                     value= {this.state.trip.description}
                     onChange= {this.changeHandler}
                 />
-                <button>Update Trip</button>
+                <button>{this.props.updatingTrip ? ('Updating') : ('Update Trip') }</button>
             </form>
 
             </div>
